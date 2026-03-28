@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor & Dados | Experiência Gastronômica</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2A5B3E",
+                        secondary: "#D4A762",
+                        accent: "#C53030",
+                        base: "#FAF8F5"
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .texto-comentario {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4A4A4A;
+            margin-top: 0.5rem;
+        }
+        .card-review {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .card-review:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .review-positive { border-left: 4px solid #2A5B3E; }
+        .review-negative { border-left: 4px solid #C53030; }
+        .review-neutral { border-left: 4px solid #D4A762; }
+        
+        .menu-item {
+            border-bottom: 1px solid #E5E7EB;
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .menu-item:last-child { border-bottom: none; }
+    </style>
+</head>
+<body class="min-h-screen bg-base font-body text-gray-800">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-3xl font-display font-bold text-primary">Sabor & Dados</h1>
+                <nav>
+                    <ul id="nav-list" class="flex gap-8 text-sm font-medium"></ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        
+        <section class="mb-16 bg-white rounded-3xl shadow-lg overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 p-10 lg:p-16">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-primary leading-tight mb-6">
+                        Uma Experiência Gastronômica Única
+                    </h2>
+                    <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+                        Combinando tradição e modernidade, nosso restaurante oferece cortes nobres e pratos cuidadosamente preparados para proporcionar uma jornada inesquecível.
+                    </p>
+                    <button class="bg-primary text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-primary/90 transition-colors">
+                        Reservar Mesa
+                    </button>
+                </div>
+                <div class="md:w-1/2 h-full">
+                    <img src="comida.png" alt="Bife grelhado premium" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="mb-16">
+            <h2 class="text-3xl font-display font-bold text-primary mb-10 text-center">Nosso Menu Executivo</h2>
+            <div id="menu-categories" class="grid grid-cols-1 lg:grid-cols-3 gap-8"></div>
+        </section>
+
+        <section id="avaliacoes" class="mb-16">
+            <h2 class="text-3xl font-display font-bold text-primary mb-10 text-center">Depoimentos de Clientes</h2>
+            <div id="reviews-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+    </main>
+
+    <footer class="bg-primary text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-display font-bold mb-2">Sabor & Dados</h3>
+            <p class="text-sm opacity-80">&copy; 2026 Sabor & Dados. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuração de Navegação
+        const navigationItems = [
+            { "label": "Início", "href": "#", "active": true },
+            { "label": "Menu", "href": "#menu" },
+            { "label": "Avaliações", "href": "#avaliacoes" }
+        ];
+
+        // Configuração de Menu
+        const menuCategories = [
+            {
+                "category": "Entradas",
+                "items": [
+                    { "name": "Bruschetta de Cogumelos", "price": "R$ 32" },
+                    { "name": "Tartare de Salmão", "price": "R$ 45" }
+                ]
+            },
+            {
+                "category": "Cortes Nobres",
+                "items": [
+                    { "name": "Bife de Tira (300g)", "price": "R$ 110" },
+                    { "name": "Ojo de Bife (300g)", "price": "R$ 105" }
+                ]
+            },
+            {
+                "category": "Sobremesas",
+                "items": [
+                    { "name": "Grand Gateau", "price": "R$ 38" },
+                    { "name": "Pudim de Leite", "price": "R$ 25" }
+                ]
+            }
+        ];
+
+        // --- OS 13 COMENTÁRIOS PARA A ANÁLISE DE IA ---
+        const customerReviews = [
+            { "name": "Maria Silva", "date": "15/10/2023", "rating": 5, "sentiment": "positive", "comment": "A comida estava absolutamente divina! O tempero do Filé Mignon estava perfeito e o ambiente é muito acolhedor." },
+            { "name": "Carlos Santos", "date": "22/09/2023", "rating": 1, "sentiment": "negative", "comment": "Minha comida chegou fria e o serviço foi extremamente lento. Esperei quase 40 minutos após pedir." },
+            { "name": "Ana Oliveira", "date": "05/11/2023", "rating": 4, "sentiment": "positive", "comment": "Os pratos são criativos e bem executados. Ambiente moderno e agradável." },
+            { "name": "Roberto Lima", "date": "18/08/2023", "rating": 2, "sentiment": "negative", "comment": "O Tiramisu estava muito aquoso e sem o sabor característico. O preço não justifica a qualidade." },
+            { "name": "Fernanda Costa", "date": "30/10/2023", "rating": 3, "sentiment": "neutral", "comment": "O preço é justo para a qualidade, mas o serviço poderia ser mais atencioso." },
+            { "name": "Ricardo Souza", "date": "10/11/2023", "rating": 5, "sentiment": "positive", "comment": "Experiência incrível! O atendimento foi impecável e a carta de vinhos é excelente." },
+            { "name": "Juliana Paes", "date": "12/11/2023", "rating": 5, "sentiment": "positive", "comment": "Melhor risoto que já comi na vida, com certeza voltarei com a família toda." },
+            { "name": "Marcos Frota", "date": "15/11/2023", "rating": 5, "sentiment": "positive", "comment": "Decoração de muito bom gosto e pratos dignos de estrela Michelin. Nota dez!" },
+            { "name": "Beatriz Lopes", "date": "18/11/2023", "rating": 2, "sentiment": "negative", "comment": "O barulho no salão estava insuportável, mal conseguíamos conversar na mesa." },
+            { "name": "Tiago Iorc", "date": "20/11/2023", "rating": 1, "sentiment": "negative", "comment": "Achei um absurdo cobrarem taxa de reserva e ainda assim nos fazerem esperar muito." },
+            { "name": "Patrícia Pillar", "date": "22/11/2023", "rating": 2, "sentiment": "negative", "comment": "Pedi o ponto da carne médio e veio praticamente crua, decepcionante." },
+            { "name": "Daniel Oliveira", "date": "25/11/2023", "rating": 3, "sentiment": "neutral", "comment": "O restaurante é ok, cumpre o que promete mas não tem nada de extraordinário." },
+            { "name": "Carla Diaz", "date": "28/11/2023", "rating": 3, "sentiment": "neutral", "comment": "Fui em uma terça-feira e estava vazio. O prato principal estava normal." }
+        ];
+
+        function renderStars(rating) {
+            return '<span class="text-secondary text-lg">' + '★'.repeat(rating) + '</span>' + 
+                   '<span class="text-gray-300 text-lg">' + '☆'.repeat(5 - rating) + '</span>';
+        }
+
+        function renderReviews(reviews) {
+            return reviews.map(review => `
+                <div class="card-review ${review.sentiment === 'positive' ? 'review-positive' : review.sentiment === 'negative' ? 'review-negative' : 'review-neutral'}">
+                    <div class="flex items-center mb-4">
+                        <div class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center mr-3 border border-primary/20">
+                            <span class="text-primary font-bold text-lg">${review.name.charAt(0)}</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-primary">${review.name}</h4>
+                            <p class="text-gray-500 text-xs">${review.date}</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">${renderStars(review.rating)}</div>
+                    <p class="texto-comentario">${review.comment}</p>
+                </div>
+            `).join("");
+        }
+
+        // Renderização Final
+        document.getElementById("nav-list").innerHTML = navigationItems.map(i => `<li><a href="${i.href}" class="${i.active ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary'}">${i.label}</a></li>`).join("");
+        
+        document.getElementById("menu-categories").innerHTML = menuCategories.map(c => `
+            <div class="bg-white rounded-2xl shadow-md p-7">
+                <h3 class="text-2xl font-display font-bold text-secondary mb-6">${c.category}</h3>
+                ${c.items.map(item => `<div class="menu-item flex justify-between"><span class="font-medium">${item.name}</span><span class="font-bold text-secondary">${item.price}</span></div>`).join("")}
+            </div>
+        `).join("");
+        
+        document.getElementById("reviews-container").innerHTML = renderReviews(customerReviews);
+    </script>
+</body>
+</html>
